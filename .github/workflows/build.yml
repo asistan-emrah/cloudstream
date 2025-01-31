@@ -31,7 +31,7 @@ jobs:
       - name: Setup Android SDK
         uses: android-actions/setup-android@v2
         with:
-          jdk-version: 17  # Java 17 zorunlu
+          jdk-version: 17
           api-level: 30
           build-tools: 30.0.3
 
@@ -39,7 +39,7 @@ jobs:
         run: |
           cd src
           chmod +x gradlew
-          ./gradlew make makePluginsJson
+          ./gradlew clean make makePluginsJson
 
       - name: Upload Artifacts
         uses: actions/upload-artifact@v4
