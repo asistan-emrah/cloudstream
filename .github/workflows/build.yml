@@ -30,9 +30,9 @@ jobs:
           build-tools: 34.0.0
           ndk: 25.1.8937393
 
-      - name: Install Android Platform Tools
+      - name: Install Android Tools
         run: |
-          yes | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --install "platform-tools"
+          yes | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --install "platform-tools" "platforms;android-34"
 
       - name: Build Plugins
         run: |
