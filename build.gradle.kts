@@ -3,13 +3,13 @@ import com.android.build.gradle.BaseExtension
 
 buildscript {
     repositories {
-        google()  // AGP için zorunlu
+        google()
         mavenCentral()
         maven("https://jitpack.io")
     }
 
     dependencies {
-        classpath("com.android.tools.build:gradle:8.2.0")  // 8.2.0 kullanın
+        classpath("com.android.tools.build:gradle:8.2.0")
         classpath("com.github.recloudstream:gradle:-SNAPSHOT")
         classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.9.21")
     }
@@ -43,9 +43,10 @@ subprojects {
     }
 
     android {
+        compileSdk = 34  // Doğru yerde!
+
         defaultConfig {
             minSdk = 21
-            compileSdk = 34  // En son sürüme güncelleyin
             targetSdk = 34
         }
 
