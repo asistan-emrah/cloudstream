@@ -23,6 +23,12 @@ allprojects {
         mavenCentral()
         maven("https://jitpack.io")
     }
+
+// build.gradle.kts (Project Level)
+plugins {
+    id("com.android.application") version "8.2.0" apply false
+    id("com.android.library") version "8.2.0" apply false
+}
 }
 
 fun Project.cloudstream(configuration: CloudstreamExtension.() -> Unit) = extensions.getByName<CloudstreamExtension>("cloudstream").configuration()
