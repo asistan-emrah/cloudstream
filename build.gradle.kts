@@ -10,7 +10,7 @@ buildscript {
 
     dependencies {
         classpath("com.android.tools.build:gradle:8.2.0")
-        classpath("com.github.recloudstream:gradle:5.0.0") // Stable sürüme güncellendi
+        classpath("com.github.recloudstream:gradle:-SNAPSHOT")  // Doğru sürüm
         classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.9.21")
     }
 }
@@ -55,7 +55,6 @@ subprojects {
             targetCompatibility = JavaVersion.VERSION_17
         }
 
-        // Namespace hatasını önlemek için eklendi
         namespace = "com.lagradost.cloudstream3.${project.name.lowercase()}"
 
         tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
