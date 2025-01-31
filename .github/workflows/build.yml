@@ -1,34 +1,49 @@
 name: Build
 
+concurrency: 
+  group: "build"
+  cancel-in-progress: true
+
 on:
   push:
-    branches: [main]
-  pull_request:
-    branches: [main]
+    branches:
+      - master
+      - main
+    paths-ignore:
+      - '*.md'
 
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          path: "src"
 
-      - name: Set up Java
+      - name: Setup JDK 11
         uses: actions/setup-java@v3
         with:
           distribution: 'temurin'
-          java-version: '11'
+          java-version: 11
 
-      - name: Set up Android SDK
+      - name: Setup Android SDK
         uses: android-actions/setup-android@v2
         with:
           api-level: 30
           build-tools: 30.0.3
 
-      - name: Build with Gradle
+      - name: Build Plugins
         run: |
+          cd src
           chmod +x gradlew
-          ./gradlew build
+          ./gradlew make makePluginsJson
+
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: builds
+          path: |
+            src/**/*.cs3
+            src/build/plugins.json
