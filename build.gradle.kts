@@ -42,8 +42,8 @@ subprojects {
         setRepo(System.getenv("GITHUB_REPOSITORY") ?: "asistan-emrah/cloudstream")
     }
 
-    android {
-        compileSdk = 34
+    configure<com.android.build.gradle.LibraryExtension> { // Android extension'ı doğrudan kullan
+        compileSdkVersion = 34
 
         defaultConfig {
             minSdk = 21
@@ -56,6 +56,8 @@ subprojects {
         }
 
         namespace = "com.lagradost.cloudstream3.${project.name.lowercase()}"
+    }
+
 
         tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
             kotlinOptions {
