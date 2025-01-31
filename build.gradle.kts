@@ -3,23 +3,22 @@ import com.android.build.gradle.BaseExtension
 
 buildscript {
     repositories {
-        google()
+        google()  // AGP için Google deposu zorunlu
         mavenCentral()
         maven("https://jitpack.io")
     }
 
     dependencies {
-        classpath("com.android.tools.build:gradle:8.2.0") // Güncellendi
+        classpath("com.android.tools.build:gradle:8.1.0")  // 8.2.0 → 8.1.0
         classpath("com.github.recloudstream:gradle:-SNAPSHOT")
         classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.9.21")
     }
 }
 
-// Plugins bloklarını allprojects dışına taşıdık
 plugins {
-    id("com.android.application") version "8.2.0" apply false
-    id("com.android.library") version "8.2.0" apply false
-    kotlin("android") version "1.9.21" apply false // Sürüm uyumlu hale getirildi
+    id("com.android.application") version "8.1.0" apply false
+    id("com.android.library") version "8.1.0" apply false
+    kotlin("android") version "1.9.21" apply false
 }
 
 allprojects {
@@ -46,18 +45,18 @@ subprojects {
     android {
         defaultConfig {
             minSdk = 21
-            compileSdk = 33 // compileSdkVersion yerine compileSdk
+            compileSdk = 33
             targetSdk = 33
         }
 
         compileOptions {
-            sourceCompatibility = JavaVersion.VERSION_17 // 1.8 yerine 17
+            sourceCompatibility = JavaVersion.VERSION_17
             targetCompatibility = JavaVersion.VERSION_17
         }
 
         tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
             kotlinOptions {
-                jvmTarget = "17" // 1.8 yerine 17
+                jvmTarget = "17"
                 freeCompilerArgs = freeCompilerArgs + listOf(
                     "-Xno-call-assertions",
                     "-Xno-param-assertions",
@@ -72,7 +71,6 @@ subprojects {
         val implementation by configurations
 
         apk("com.lagradost:cloudstream3:pre-release")
-        
         implementation(kotlin("stdlib"))
         implementation("com.github.Blatzar:NiceHttp:0.4.4")
         implementation("org.jsoup:jsoup:1.16.2")
