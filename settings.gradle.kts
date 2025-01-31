@@ -1,9 +1,10 @@
 // settings.gradle.kts
 pluginManagement {
     repositories {
-        google()  // Android Gradle Plugin için
+        google()
         mavenCentral()
         gradlePluginPortal()
+        maven("https://jitpack.io")  // JitPack eklendi
     }
 }
 
