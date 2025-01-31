@@ -10,7 +10,7 @@ buildscript {
 
     dependencies {
         classpath("com.android.tools.build:gradle:8.2.0")
-        classpath("com.github.recloudstream:gradle:-SNAPSHOT")
+        classpath("com.github.recloudstream:gradle:5.0.0") // Stable sürüme güncellendi
         classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.9.21")
     }
 }
@@ -43,7 +43,7 @@ subprojects {
     }
 
     android {
-        compileSdk = 34  // Doğru yerde!
+        compileSdk = 34
 
         defaultConfig {
             minSdk = 21
@@ -54,6 +54,9 @@ subprojects {
             sourceCompatibility = JavaVersion.VERSION_17
             targetCompatibility = JavaVersion.VERSION_17
         }
+
+        // Namespace hatasını önlemek için eklendi
+        namespace = "com.lagradost.cloudstream3.${project.name.lowercase()}"
 
         tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
             kotlinOptions {
@@ -80,6 +83,6 @@ subprojects {
     }
 }
 
-task<Delete>("clean") {
+tasks.register<Delete>("clean") {
     delete(rootProject.buildDir)
 }
