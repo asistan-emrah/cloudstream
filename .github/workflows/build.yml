@@ -29,12 +29,11 @@ jobs:
           java-version: '17'
 
       - name: Setup Android SDK
-        uses: android/setup-sdk@v1
+        uses: android-actions/setup-android@v2
         with:
+          jdk-version: 17  # Java 17 zorunlu
           api-level: 30
           build-tools: 30.0.3
-          cmake: 3.22.1
-          ndk: 25.1.8937393
 
       - name: Build Plugins
         run: |
