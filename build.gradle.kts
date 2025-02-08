@@ -27,7 +27,7 @@ fun Project.cloudstream(configuration: CloudstreamExtension.() -> Unit) = extens
 fun Project.android(configuration: BaseExtension.() -> Unit) = extensions.getByName<BaseExtension>("android").configuration()
 
 android {
-    namespace = "com.keyiflerolsun"
+    namespace = "com.asistan-emrah"
     compileSdkVersion(34) // compileSdk = 34 → BU SATIRI DÜZELTİN
 
     defaultConfig {
