@@ -43,7 +43,7 @@ subprojects {
     }
 
     configure<com.android.build.gradle.LibraryExtension> { // Android extension'ı doğrudan kullan
-        compileSdkVersion = 34
+        compileSdkVersion(34)
 
         defaultConfig {
             minSdk = 21
